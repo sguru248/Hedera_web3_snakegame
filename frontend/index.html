@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game - Hedera Chain</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Snake Game <span class="chain-badge">Hedera Testnet</span></h1>
+
+        <div class="wallet-section">
+            <button id="connectBtn" onclick="connectWallet()">Connect MetaMask</button>
+            <span id="walletAddr"></span>
+        </div>
+
+        <div class="game-area">
+            <div class="game-info">
+                <span>Score: <strong id="currentScore">0</strong></span>
+                <span>Best: <strong id="bestScore">0</strong></span>
+            </div>
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            <div class="controls">
+                <button onclick="startGame()">Start Game</button>
+                <p class="hint">Use Arrow Keys or WASD to move</p>
+            </div>
+        </div>
+
+        <div class="leaderboard">
+            <h2>On-Chain Leaderboard</h2>
+            <table id="leaderboardTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Player</th>
+                        <th>Score</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardBody">
+                    <tr><td colspan="4">Connect wallet to view scores</td></tr>
+                </tbody>
+            </table>
+            <button id="refreshBtn" onclick="loadLeaderboard()" style="margin-top:10px">Refresh Leaderboard</button>
+        </div>
+    </div>
+
+    <div id="gameOverModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Game Over!</h2>
+            <p>Your score: <strong id="finalScore">0</strong></p>
+            <button id="registerBtn" onclick="registerScore()">Register Score On-Chain</button>
+            <button onclick="closeModal()">Close</button>
+            <p id="txStatus"></p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

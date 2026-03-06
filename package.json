@@ -1,0 +1,16 @@
+{
+  "name": "hedera-snake-game",
+  "version": "1.0.0",
+  "description": "Snake game with on-chain score registration on Hedera Testnet",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.js --network hederaTestnet",
+    "dev": "npx http-server frontend -p 3000 -o"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "dotenv": "^16.3.1",
+    "hardhat": "^2.19.0",
+    "http-server": "^14.1.1"
+  }
+}
